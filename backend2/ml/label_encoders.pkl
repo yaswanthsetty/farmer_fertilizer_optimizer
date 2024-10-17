@@ -1,0 +1,48 @@
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.ensemble import RandomForestRegressor
+from sklearn.metrics import mean_absolute_error, r2_score
+from sklearn.preprocessing import LabelEncoder
+import joblib
+
+# Load your data
+data = pd.read_excel('path_to_your_excel_file.xlsx')
+
+# Encode categorical features
+label_encoders = {}
+for column in ['crop type', 'season', 'state']:
+    le = LabelEncoder()
+    data[column] = le.fit_transform(data[column])
+    label_encoders[column] = le
+
+# Save the label encoders
+joblib.dump(label_encoders, 'label_encoders.pkl')
+
+# Handle missing values
+data.fillna(method='ffill', inplace=True)
+
+# Define features and target variable
+X = data[['crop type', 'season', 'state', 'area', 'production', 'Annual_Rainfall', 'fertilizer', 'pesticide']]
+y = data['crop_yield']
+
+# Split the data into training and testing sets
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+# Initialize the RandomForestRegressor
+model = RandomForestRegressor(n_estimators=100, random_state=42)
+
+# Train the model
+model.fit(X_train, y_train)
+
+# Save the model
+joblib.dump(model, 'fertilizer_model.pkl')
+
+# Make predictions
+y_pred = model.predict(X_test)
+
+# Evaluate the model
+mae = mean_absolute_error(y_test, y_pred)
+r2 = r2_score(y_test, y_pred)
+
+print(f'Mean Absolute Error: {mae}')
+print(f'R² Score: {r2}')

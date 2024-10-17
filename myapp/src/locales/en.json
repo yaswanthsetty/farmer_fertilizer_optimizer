@@ -1,0 +1,94 @@
+{
+    "signIn": {
+      "title": "Sign In",
+      "email": "Email",
+      "password": "Password",
+      "submit": "Sign In",
+      "forgotPassword": "Forgot Password?",
+      "signUpPrompt": "Don't have an account? Sign Up"
+    },
+    "signUp": {
+      "title": "Sign Up",
+      "name": "Name",
+      "email": "Email",
+      "password": "Password",
+      "reenterPassword": "Re-enter Password",
+      "submit": "Sign Up",
+      "signInPrompt": "Already have an account? Sign In"
+    },
+    
+        "landing": {
+          "headerTitle": "Sustainable Fertilizer Optimizer",
+          "loginSignUpButton": "Login / Sign Up",
+          "heroTitle": "Optimize Fertilizer Usage for Higher Yield",
+          "heroSubtitle": "Our sustainable fertilizer optimizer helps you maximize crop yield while reducing environmental impact.",
+          "learnMoreButton": "Learn More",
+          "aboutTitle": "About Our Solution",
+          "aboutDescription": "We provide an intelligent system that recommends the optimal amount of fertilizer based on crop type, soil conditions, and environmental factors. Our solution is eco-friendly, ensuring the best balance between productivity and sustainability.",
+          "featuresTitle": "Key Features",
+          "feature1": {
+            "title": "Smart Recommendations",
+            "description": "Get precise fertilizer recommendations for each crop."
+          },
+          "feature2": {
+            "title": "Eco-friendly",
+            "description": "Minimize environmental impact while improving yield."
+          },
+          "feature3": {
+            "title": "Real-time Analysis",
+            "description": "Analyze soil data and conditions in real-time for optimal fertilization."
+          },
+          "contactTitle": "Contact Us",
+          "contactDescription": "Have any questions? Reach out to us for more information.",
+          "contactName": "Your Name",
+          "contactEmail": "Your Email",
+          "contactMessage": "Your Message",
+          "sendMessageButton": "Send Message",
+          "footerText": "&copy; 2024 Sustainable Fertilizer Optimizer. All Rights Reserved."
+        },
+        
+            "navbar": {
+              "about": "About Us",
+              "contacts": "Contacts",
+              "help": "Help"
+            },
+            "hero": {
+              "title": "Welcome to Our Agricultural Platform"
+            },
+            "services": {
+              "title": "Our Services"
+            },
+            "box1": {
+              "title": "Data-Driven Solutions",
+              "description": "Leveraging technology for smarter farming"
+            },
+            "box2": {
+              "title": "Machine Learning Analysis",
+              "description": "Personalized crop recommendations"
+            },
+            "box3": {
+              "title": "Crop Yield Optimization",
+              "description": "Maximizing your crop's potential"
+            },
+            "box4": {
+              "title": "Sustainable Agriculture",
+              "description": "Fostering eco-friendly farming practices"
+            },
+            "learn_more": "Learn More",
+            "team": {
+              "title": "Meet Our Team"
+            },
+            "profile": "Profile",
+            "logout": "Logout",
+            "footer": {
+              "privacy": "Privacy Policy",
+              "terms": "Terms of Service",
+              "contact": "Contact Us",
+              "copyright": "All rights reserved."
+            }
+          
+          
+      
+      
+  }
+  

@@ -3,6 +3,8 @@ import {
   Box, Button, Input, VStack, FormControl, FormLabel, Select, Text, Heading, Alert, AlertIcon,
 } from '@chakra-ui/react';
 import { motion } from 'framer-motion';
+// import { useTranslation } from 'react-i18next';
+
 
 // Animation for background elements
 const MotionBox = motion(Box);
@@ -21,6 +23,17 @@ const SoilTestForm = () => {
   const [error, setError] = useState('');
 
   const handlePrediction = () => {
+    if (!nitrogen || !phosphorus || !potassium || !temperature || !humidity || !moisture || !soilType || !cropType) {
+      setError('All fields are required');
+      return;
+    }
+  
+    if (isNaN(nitrogen) || isNaN(phosphorus) || isNaN(potassium) || isNaN(temperature) || isNaN(humidity) || isNaN(moisture)) {
+      setError('Please enter valid numbers');
+      return;
+    }
+  
+    setError('');
     // Simple logic to select a fertilizer based on some conditions
     if (nitrogen < 20 && phosphorus < 20) {
       setPredictedFertilizer('NPK 17-17-17');
@@ -233,15 +246,15 @@ const SoilTestForm = () => {
           {/* Predicted Fertilizer Display */}
           {predictedFertilizer && (
             <MotionBox
-              p={6}
-              mt={4}
-              bg="teal.100"
-              borderRadius="md"
-              boxShadow="md"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.5 }}
-              width="100%"
+            p={6}
+            mt={4}
+            bg="teal.100"
+            borderRadius="md"
+            boxShadow="md"
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            width="100%"
             >
               <MotionText
                 fontSize="xl"

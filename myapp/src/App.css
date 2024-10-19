@@ -36,3 +36,22 @@
     transform: rotate(360deg);
   }
 }
+
+.google-translate-container {
+  margin: 20px 0; /* Space above and below the translator */
+}
+
+.language-select {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  color: #333;
+  transition: border-color 0.3s;
+  width: 150px; /* Set a width for consistency */
+}
+
+.language-select:focus {
+  border-color: #61dafb; /* Change border color on focus */
+  outline: none; /* Remove default outline */
+}

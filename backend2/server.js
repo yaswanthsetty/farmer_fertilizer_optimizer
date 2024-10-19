@@ -4,6 +4,7 @@ const cors = require('cors');
 const dotenv = require('dotenv');
 const { PythonShell } = require('python-shell');  // Import python-shell
 const authRoutes = require('./routes/auth');
+const predictRoutes = require('./routes/predict');
 
 dotenv.config();
 
@@ -17,8 +18,8 @@ app.use(cors({
 }));
 
 mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
-  .then(() => console.log("MongoDB Connected"))
-  .catch((err) => console.error("MongoDB connection error:", err));
+    .then(() => console.log("MongoDB Connected"))
+    .catch((err) => console.error("MongoDB connection error:", err));
 
 app.use('/api/auth', authRoutes);
 
@@ -29,8 +30,8 @@ app.post('/api/predict', (req, res) => {
 
   const { Nitrogen, Phosphorous, Potassium, SoilType, CropType, Temperature, Humidity, Moisture } = req.body;
 
-  // Prepare the data for the Python script
-  const data = {
+  // Prepare the input data to be passed to the Python script
+  const data = JSON.stringify({
     Nitrogen,
     Phosphorous,
     Potassium,
@@ -39,28 +40,28 @@ app.post('/api/predict', (req, res) => {
     Temperature,
     Humidity,
     Moisture,
-  };
+  });
 
-  // Execute the Python script
-  PythonShell.run('predict.py', { args: [JSON.stringify(data)] }, (err, result) => {
+  // Execute the Python script with input arguments
+  PythonShell.run('predict.py', { args: [data], timeout:60000 }, (err, result) => {
     if (err) {
       console.error('Error running Python script:', err);
       return res.status(500).json({ error: 'Error during prediction!' });
     }
 
-    // Parse and send the prediction result
-    const prediction = JSON.parse(result[0]);
-    console.log('Prediction result:', prediction);
-    res.json({ predicted_fertilizer: prediction });
+    console.log('Raw result from Python script:', result);
+    
+    try {
+      // Parse and send the prediction result
+      const prediction = JSON.parse(result[0]); // Assuming the first item in the result array is the output
+      console.log('Parsed prediction:', prediction);
+      res.json({ predictedFertilizer: prediction });
+    } catch (parseError) {
+      console.error('Error parsing prediction result:', parseError);
+      return res.status(500).json({ error: 'Error parsing prediction result!' });
+    }
   });
 });
-
-//change
-const bodyParser = require('body-parser');
-const predictRoutes = require('./routes/predict');
-
-// Middleware
-app.use(bodyParser.json());
 
 // Routes
 app.use('/api', predictRoutes);

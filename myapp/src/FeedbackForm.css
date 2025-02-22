@@ -1,0 +1,133 @@
+/* Set the background image */
+body {
+    background: url("C:\Users\Yaswanth\OneDrive\Desktop\feedback.jpg") no-repeat center center fixed;
+    background-size: cover;
+    font-family: 'Arial', sans-serif;
+    color: #333;
+}
+
+/* Main container for the feedback form */
+.feedback-form-container {
+    width: 400px;
+    margin: 20px auto;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    background-color: rgba(255, 255, 255, 0); /* Fully transparent background */
+    backdrop-filter: blur(5px); /* Optional: Blur effect for background */
+}
+
+/* Title styling for the feedback form */
+.feedback-form-title {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #2c3e50; /* Darker text color for contrast */
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* Styling for form group container */
+.form-group {
+    margin-bottom: 20px;
+}
+
+/* Label for input fields */
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #2c3e50; /* Darker text color for label */
+}
+
+/* Text input and textarea styling */
+.form-control {
+    width: 350px;
+    padding: 12px;
+    border: 1px solid #ced4da;
+    border-radius: 6px;
+    background-color: rgba(255, 255, 255, 0.7); /* Semi-transparent white background for form fields */
+    transition: border 0.3s ease;
+}
+
+/* Add focus effect to form fields */
+.form-control:focus {
+    border-color: #2980b9; /* Blue border on focus */
+    outline: none;
+    box-shadow: 0 0 5px rgba(41, 128, 185, 0.2);
+}
+
+/* Error text styling */
+.error-text {
+    color: #e74c3c; /* Red color for error messages */
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+/* Star rating section */
+.star-rating {
+    display: flex;
+    gap: 10px;
+    font-size: 35px;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+/* Styling for each star */
+.star {
+    cursor: pointer;
+    color: #bdc3c7; /* Default star color (gray) */
+    transition: color 0.3s ease;
+}
+
+/* Color the selected stars */
+.star.selected {
+    color: #f39c12; /* Gold for selected stars */
+}
+
+/* Styling for the submit button */
+.submit-button {
+    padding: 12px 15px;
+    background-color: #27ae60; /* Green background for the button */
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 6px;
+    width: 100%;
+    font-size: 16px;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+/* Submit button hover effect */
+.submit-button:hover {
+    background-color: #2ecc71; /* Slightly lighter green on hover */
+}
+
+/* Radio buttons for useful experience */
+.form-group label input[type="radio"] {
+    margin-right: 8px;
+}
+
+/* Textarea specific styling */
+textarea.form-control {
+    resize: vertical; /* Allow vertical resizing */
+    min-height: 100px;
+    max-height: 200px;
+    font-family: inherit;
+    font-size: 14px;
+}
+
+/* Media query for responsive design */
+@media (max-width: 500px) {
+    .feedback-form-container {
+      width: 90%; /* Adjust container width on smaller screens */
+    }
+
+    .star-rating {
+      font-size: 28px; /* Adjust star size on smaller screens */
+    }
+
+    .submit-button {
+      font-size: 14px; /* Adjust button text size */
+    }
+}
